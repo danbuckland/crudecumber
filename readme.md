@@ -9,7 +9,7 @@ To run, do the following:
 If you have RVM installed, type **y** when prompted to automatically create a ruby environment and install required gems
 3. Type **cucumber** in the terminal to run
 4. For each step, press **Enter** to pass or type anything else to fail
-  * You will be prompted to add notes to failing steps which will then appear
+ * You will be prompted to add notes to failing steps which will then appear
 5. After running all scenarios, type **open crudecumber_results.html** to see the generated report.
 6. Add your own features to the features directory with the **@****manual** tag.
 
