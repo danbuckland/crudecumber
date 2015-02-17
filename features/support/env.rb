@@ -1,3 +1,6 @@
+require 'launchy'
+
 at_exit do
-  puts "Report generated. Enter \'open crudecumber_results.html\' in terminal to view."
+  d = Dir.pwd
+  Launchy.open("file:///" + d + "/crudecumber_results.html")
 end
