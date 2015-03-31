@@ -22,23 +22,25 @@ To add manual Crudecumber scenarios to an existing automation suite do the follo
 2. Add **crudecumber\_steps.rb** to your step\_definitions folder
 3. Create a manual\_report.rb file and add it to the **support** folder
 
-  require 'launchy'
-    at\_exit do
-    puts "Report generated. Enter \'open crudecumber\_results.html\' in terminal to view."
-    directory = Dir.pwd
-    Launchy.open("file:///" + directory + "/crudecumber\_results.html")
-  end
+```ruby
+require 'launchy'
+at\_exit do
+puts "Report generated. Enter \'open crudecumber\_results.html\' in terminal to view."
+directory = Dir.pwd
+Launchy.open("file:///" + directory + "/crudecumber\_results.html")
+end
+```
 
 4. Modify or create a cucumber.yml file to have a **manual** profile which will require the crudecumber\_steps.rb and manual\_report.rb files
 
     Example manual profile:
-
+    
+```
     manual: --tags @manual -r features/step\_definitions/crudecumber\_steps.rb -r features/support/manual\_report.rb -f 'Slowhandcuke::Formatter' -f html -o crudecumber\_results.html
+```
 
 5. Modify cucumber.yml file to exclude the previous two files in the automation profile by using the **-e** tag
 6. Add any missing gems to your Gemfile
-
-
 
 
 This project is work in progress and currently does the job but is not as elegant as it could be. If you'd like to contribute, branch and generate a pull request. Do not self approve!
