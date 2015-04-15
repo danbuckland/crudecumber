@@ -3,22 +3,24 @@ require 'io/console'
 module PassFail
 
   def pass?
+    state = 'stty -g'
     begin
-      system("stty raw -echo -icanon isig")
+      system("stty raw -echo isig")
       str = STDIN.getc.chr
-      if str.chr == "p"
+      case
+      when str.chr == "p"
         true
-      elsif str.chr =="\r"
+      when str.chr =="\r"
         true
-      elsif str.chr == "f"
+      when str.chr == "f"
         false
-      elsif str.chr == "x"
+      when str.chr == "x"
         false
       else
-        # Need this to return to the start if any other key
+        # something
       end
     ensure
-      system("stty -raw echo icanon")
+      system("stty -raw echo")
     end
   end
 
