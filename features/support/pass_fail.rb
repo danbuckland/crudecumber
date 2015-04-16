@@ -2,28 +2,34 @@ require 'io/console'
 
 module PassFail
 
-  def pass?
-    state = 'stty -g'
-    begin
-      system("stty raw -echo isig")
+  def capture_key
+    str = "v"
+    system("stty raw -echo isig")
+    until ["p", "\r", "f", "x"].include? str do
       str = STDIN.getc.chr
-      case
-      when str.chr == "p"
+    end
+    str
+  end
+
+  def pass?(a)
+    case
+      when a == "p"
         true
-      when str.chr =="\r"
+      when a =="\r"
         true
-      when str.chr == "f"
+      when a == "f"
         false
-      when str.chr == "x"
+      when a == "x"
         false
       else
-        # something
       end
     ensure
       system("stty -raw echo")
-    end
   end
 
 end
 
 World(PassFail)
+
+# TODO fix bug where using ctrl+c leaves the terminal without echo and in raw
+# TODO ignore key presses that are not pass or fail

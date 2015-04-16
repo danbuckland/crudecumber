@@ -1,3 +1,4 @@
 Then(/^.*$/) do
-  fail unless pass?
+  key = capture_key
+  fail unless pass?(key)
 end
