@@ -32,4 +32,3 @@ end
 World(PassFail)
 
 # TODO fix bug where using ctrl+c leaves the terminal without echo and in raw
-# TODO ignore key presses that are not pass or fail
