@@ -27,7 +27,7 @@ module PassFail
       exit!(1) if Cucumber.wants_to_quit
       Cucumber.wants_to_quit = true
       system("stty -raw echo")
-      STDERR.puts "\nPress 'Ctrl + C' again to end your test run"
+      STDERR.puts "\nPress 'Ctrl + c' again to quit Crudecumber"
     end
   end
 
