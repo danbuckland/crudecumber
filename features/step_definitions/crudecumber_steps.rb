@@ -8,7 +8,7 @@ Then(/^.*$/) do
       fail
     end
   else
-    puts "  Step skipped by tester"
+    puts "  Skipped by tester"
     pending
   end
 end
