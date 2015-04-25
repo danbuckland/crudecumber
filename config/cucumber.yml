@@ -1,1 +1,1 @@
-default: --tags @manual -r features -r features/support/env.rb -f 'Slowhandcuke::Formatter' -f html -o crudecumber_results.html
+default: --tags @manual -f Crudecumber::Formatter -f Crudecumber::Report -o crudecumber_results.html
