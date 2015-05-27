@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Manually run through your Cucumber scenarios."
   s.author      = ['Dan Buckland']
   s.email       = 'danbucklan@gmail.com'
-  s.files       = ["lib/crudecumber.rb"]
+  s.files       = ["lib/crudecumber.rb", "lib/crudecumber/translator.rb"]
   s.homepage    = 'http://rubygems.org/gems/crudecumber'
   s.license     = 'MIT'
   s.platform    = Gem::Platform::RUBY
@@ -15,4 +15,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'cucumber', '1.3.19'
   s.add_dependency 'slowhandcuke', '0.0.3'
   s.add_dependency 'launchy', '2.4.3'
+
+  s.executables << 'crudecumber'
 end

@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'crudecumber'
+puts Crudecumber.hi(ARGV[0])
