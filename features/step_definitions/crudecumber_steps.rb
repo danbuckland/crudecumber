@@ -1,9 +1,14 @@
 Then(/^.*$/) do
-  answer = STDIN.gets.chomp
-  if answer == ""
+  Cucumber.trap_interrupt
+  key = capture_key
+  unless skipped?(key)
+    unless pass?(key)
+      print "\n    Describe the problem: "
+      puts "  Notes: " + STDIN.gets.chomp
+      fail
+    end
   else
-    print "Describe the problem:\n"
-    puts "NOTES: " + STDIN.gets.chomp
-    fail
+    puts "  Skipped by tester"
+    pending
   end
 end
