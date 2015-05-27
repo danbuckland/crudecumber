@@ -34,7 +34,7 @@ end
 * Modify or create a cucumber.yml file to have a **manual** profile which will require the crudecumber\_steps.rb and manual\_report.rb files
 
     Example manual profile:
-    
+
 ```
     manual: --tags @manual -r features/step_definitions/crudecumber_steps.rb -r features/support/manual_report.rb -f 'Slowhandcuke::Formatter' -f html -o crudecumber_results.html
 ```
@@ -44,3 +44,8 @@ end
 
 
 This project is work in progress and currently does the job but is not as elegant as it could be. If you'd like to contribute, branch and generate a pull request. Do not self approve!
+
+
+## Copyright
+
+Copyright (c) 2015 Dan Buckland and Contributors. See LICENSE for details.
