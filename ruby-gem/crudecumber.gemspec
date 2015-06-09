@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Manually run through your Cucumber scenarios."
   s.author      = ['Dan Buckland']
   s.email       = 'danbucklan@gmail.com'
-  s.files       = ["lib/crudecumber.rb", "lib/crudecumber/translator.rb", "lib/crudecumber/project_generator.rb"]
+  s.files       = Dir['lib/**/**/*'] + Dir['bin/*'] 
   s.homepage    = 'http://rubygems.org/gems/crudecumber'
   s.license     = 'MIT'
   s.platform    = Gem::Platform::RUBY
