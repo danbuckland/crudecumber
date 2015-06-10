@@ -1,3 +1,9 @@
+# This is very much a work in progress - this is a first stab at creating a
+# manual Cucumber runner.
+#
+# Just type "crudecumber" in any folder containing a features folder!
+#
+
 def log(message)
   $stdout.puts "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} - #{message}" if (ARGV.include? "-v" or ARGV.include? "--verbose")
 end
