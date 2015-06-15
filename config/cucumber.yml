@@ -1,1 +1,0 @@
-default: --tags @manual -f Crudecumber::Formatter -f Crudecumber::Report -o crudecumber_results.html
