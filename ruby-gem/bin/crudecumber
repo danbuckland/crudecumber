@@ -1,7 +1,3 @@
 #!/usr/bin/env ruby
 
 require 'crudecumber'
-
-# crudecumber = ProjectGenerator.new
-
-# exec('cucumber -t @manual -f Crudecumber::Formatter -f Crudecumber::Report -o crudecumber_results.html')
