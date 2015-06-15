@@ -15,8 +15,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.required_ruby_version = ">= 1.9.3"
 
-  s.add_runtime_dependency 'launchy', '>= 2.0.4'
   s.add_runtime_dependency 'cucumber', '~> 1.3', '>= 1.3.3'
+  s.add_runtime_dependency 'launchy', '~> 2.0', '>= 2.0.4'
 
   s.executables << 'crudecumber'
 end
