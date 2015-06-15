@@ -1,5 +1,7 @@
 # Crudecumber
 
+[![Gem Version](https://badge.fury.io/rb/crudecumber.svg)](http://badge.fury.io/rb/crudecumber)
+
 Crudecumber allows developers and testers to manually run through Cucumber scenarios written in Gherkin in the command line without the need for any step definitions.
 
 Crudecumber was developed as a tool to promote the use of [Behaviour Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) and [Cucumber](https://github.com/cucumber/cucumber "Cucumber GitHub Repository") within teams that might not have the time or expertise to turn their scenarios into automated tests.
