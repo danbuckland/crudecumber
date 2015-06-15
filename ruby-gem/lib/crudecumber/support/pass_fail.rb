@@ -32,13 +32,9 @@ module PassFail
   end
 
   def Cucumber.trap_interrupt
-
-    trap('INT') do
-      exit!(1) if Cucumber.wants_to_quit
-      Cucumber.wants_to_quit = true
-      system("stty -raw echo")
-      STDERR.puts "\nPress 'Ctrl + c' again to quit Crudecumber"
-    end
+     trap('INT') do
+       exit!(1)
+     end
   end
 
 end

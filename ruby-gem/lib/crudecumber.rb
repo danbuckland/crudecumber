@@ -4,6 +4,12 @@
 # Just type "crudecumber" in any folder containing a features folder!
 #
 
+trap('INT') do
+  system("stty -raw echo")
+  STDERR.puts "\n\n"
+  exit!(1)
+end
+
 def log(message)
   $stdout.puts "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")} - #{message}" if (ARGV.include? "-v" or ARGV.include? "--verbose")
 end
