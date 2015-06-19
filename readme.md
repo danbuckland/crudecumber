@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/danbuckland/crudecumber.png?label=ready&title=Ready)](https://waffle.io/danbuckland/crudecumber)
 # Crudecumber
 
 [![Gem Version](https://badge.fury.io/rb/crudecumber.svg)](http://badge.fury.io/rb/crudecumber)
