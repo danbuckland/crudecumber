@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'crudecumber'
-  s.version     = '0.1.3'
+  s.version     = '0.1.3.dev'
   s.date        = '2015-06-15'
   s.summary     = 'Crudecumber 0.1.3'
   s.description = "Manually run through your Cucumber scenarios.\n
