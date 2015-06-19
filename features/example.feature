@@ -1,29 +1,18 @@
-Feature: Use Cucumber as a manual test tool
+Feature: Running any Cucumber scenarios with the Crudecumber gem
 
   As a QA Engineer learning Cucumber, I want to write scenarios for a product
   and run them manually.
 
-  Scenario: Pass steps
-    Given my directory contains a features folder with at least 1 feature file
-    When I type "crudecumber" in the Terminal to run Crudecumber
-    And I press "p" or "enter" on the keyboard
-    Then the step should pass
+  Scenario: Run external feature file with Crudecumber
+    Given I have a feature file in a features directory
+    And I have the Crudecumber gem installed
+    When I run 'crudecumber'
+    Then I should be able to step through my scenarios manually
 
-  Scenario: Fail steps
-    Given my directory contains a features folder with at least 1 feature file
-    When I type "crudecumber" in the Terminal to run Crudecumber
-    And I press "f" or "x" on the keyboard
-    Then the step should fail
-    And I should be able to provide a reason for the failure
-
-  Scenario: Skip steps
-    Given my directory contains a features folder with at least 1 feature file
-    When I type "crudecumber" in the Terminal to run Crudecumber
-    And I press "s" on the keyboard
-    Then the step should be skipped
-
-  Scenario: Exit Crudecumber
-    Given my directory contains a features folder with at least 1 feature file
-    When I type "crudecumber" in the Terminal to run Crudecumber
-    And I press "ctrl+c" on the keyboard
-    Then Crudecumber should exit immediately
+  @bugs @#2
+  Scenario: Ignore local step definitions to avoid ambiguous matches
+    Given I have local step definitions for this step
+    And a default profile explicitly requiring the step_definitions folder
+    When I run 'crudecumber --v'
+    Then the local step definition should not be loaded
+    And I should be able to step through my scenarios manually

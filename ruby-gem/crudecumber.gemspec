@@ -1,12 +1,11 @@
 Gem::Specification.new do |s|
   s.name        = 'crudecumber'
-  s.version     = '0.1.3'
+  s.version     = '0.1.4'
   s.date        = '2015-06-15'
-  s.summary     = 'Crudecumber 0.1.3'
+  s.summary     = 'Crudecumber 0.1.4'
   s.description = "Manually run through your Cucumber scenarios.\n
-  Run exactly as you would run Cucumber but instead use \"crudecumber\" followed
-  by your usual arguments. May not work if you use profiles to manually require
-  automation step definitions."
+  Run exactly as you would run Cucumber but instead use \'crudecumber\' followed
+  by your usual arguments."
   s.author      = ['Dan Buckland']
   s.email       = 'danbucklan@gmail.com'
   s.files       = Dir['lib/**/**/*'] + Dir['bin/*']
