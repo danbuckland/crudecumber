@@ -24,7 +24,7 @@ end
 
 STDOUT.sync = true
 arguments = ARGV
-cmd = "cucumber #{arguments.join(' ')} -e features/step_definitions "\
+cmd = "cucumber #{arguments.join(' ')} -x -e features/step_definitions "\
       "-r #{steps} -r #{support_files} "\
       '-f Crudecumber::Formatter -f Crudecumber::Report '\
       '-o crudecumber_results.html'

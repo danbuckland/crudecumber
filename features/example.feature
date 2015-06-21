@@ -31,11 +31,11 @@ Feature: Running any Cucumber scenarios with the Crudecumber gem
     Given I have a table full of examples
     And <country> has <tourists> visitors each year
     And an area of <area>
-    When I run 'crudecumber -x'
+    When I run 'crudecumber'
     Then I should be able to step through each scenario manually
 
-  Examples:
-    | country      | area     | tourists  |
-    | Vatican City | 0.44km^2 | 4,300,000 |
-    | Monaco       | 1.95km^2 | 328,000   |
-    | San Marino   | 61km^2   | 70,000    |
+    Examples:
+      | country      | area     | tourists  |
+      | Vatican City | 0.44km^2 | 4,300,000 |
+      | Monaco       | 1.95km^2 | 328,000   |
+      | San Marino   | 61km^2   | 70,000    |
