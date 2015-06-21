@@ -16,3 +16,26 @@ Feature: Running any Cucumber scenarios with the Crudecumber gem
     When I run 'crudecumber --v'
     Then the local step definition should not be loaded
     And I should be able to step through my scenarios manually
+
+  @tables
+  Scenario: Allow testers to manually run scenarios with tables
+    Given I have a scenario that contains the following table:
+      | Javan Slow Loris    |
+      | Rondo Dwarf Galago  |
+      | Brown Spider Monkey |
+    When I run 'crudecumber'
+    Then I should be able to step through this scenario manually
+
+  @tables
+  Scenario Outline: Allow testers to manually run scenario outlines
+    Given I have a table full of examples
+    And <country> has <tourists> visitors each year
+    And an area of <area>
+    When I run 'crudecumber'
+    Then I should be able to step through each scenario manually
+
+    Examples:
+      | country      | area     | tourists  |
+      | Vatican City | 0.44km^2 | 4,300,000 |
+      | Monaco       | 1.95km^2 | 328,000   |
+      | San Marino   | 61km^2   | 70,000    |
