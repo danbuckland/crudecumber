@@ -2,7 +2,7 @@
 # Essentially listens for the keys "return", "p", "f", "x" and "s" and then
 # decides whether to pass, fail or skip the step being run.
 
-Then(/^.*$/) do
+Then(/^.*$/) do | *x |
   Cucumber.trap_interrupt
   key = capture_key
   if skipped?(key)
