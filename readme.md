@@ -32,7 +32,6 @@ You can append any of the usual Cucumber arguments to, for example, run a subset
 Crudecumber is in its infancy and will be capable of more in time. In the current release there are the following known issues:
 * **Crudecumber is not compatible with Cucumber 2.0 or above.** Even if you're not using Cucumber 2.0 but you have it installed, you'll have a problem with steps not being rendered until after they are passed, failed or skipped. The best way to avoid this is to use [rvm](https://rvm.io/) and use a separate gemset for your Cucumber 2.0 stuff.
 * Crudecumber automatically opens an HTML report at the end of a test run and requires **launchy** to open it. If you are using bundler, you may see the error ***cannot load such file -- launchy (LoadError)***. This can be remedied by updating your Gemfile and doing a `bundle install`.
-* Cucumber Tables are not currently supported.
 * This tool has been developed and tested on Mac OSX and Linux. Windows users may have trouble getting it to run.
 
 If you'd like to contribute to this project and perhaps fix any of the above, please fork the project, make and test your change and then generate a pull request!
