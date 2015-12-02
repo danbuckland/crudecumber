@@ -62,6 +62,35 @@ Then run your manual tests by typing `cucumber -p manual` in a terminal and usin
 
 **Crudecumber** uses its own modified formatters to display scenarios in the terminal and output an html report without error messages. Including other formatters and outputs in your **manual** profile may break something.
 
+#### Force Crudecumber from Cucumber
+Depending on the structure of you Cucumber tests, you may encounter an issue with the above where Cucumber runs again after **Crudecumber** has finished. This tends to occur if you have a lot going on in your **support** directory or you're using a framework like [Calabash](https://github.com/calabash "Calabash GitHub account").
+
+To fix, replace `require 'crudecumber'` with the following in the **Before** part of you `env.rb` file:
+```ruby
+# features/support/env.rb
+
+Before do |scenario|  
+  if scenario.source_tag_names.include? "@manual"
+    exec('crudecumber -p manual')
+  end
+end
+```
+Using `exec` replaces the currently running process – in this case Cucumber – with the specified new process – in this case **Crudecumber**.
+
+As before, use a **manual** profile to run scenarios tagged **@manual** and exclude scenarios tagged **@manual** from other profiles in your project's `cucumber.yml` file:
+
+```yaml
+# config/cucumber.yml
+
+default: -t ~@manual -f pretty -f html -o automated_test_report.html
+manual: -t @manual -f progress
+
+```
+Adding `-f progress` will prevent the first feature being printed before **Crudecumber** is called.
+
+For this to work, you should ensure that you have **Crudecumber** in your Gemfile and installed through bundler.
+
+
 ## Known issues and limitations
 
 Crudecumber is in its infancy and will be capable of more in time. In the current release there are the following known issues:
