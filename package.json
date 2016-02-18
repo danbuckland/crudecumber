@@ -1,0 +1,23 @@
+{
+  "name": "crudecumber-website",
+  "version": "1.0.0",
+  "description": "Crudecumber website to be hosted on GitHub Pages",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://danbuckland@github.com/danbuckland/crudecumber.git"
+  },
+  "author": "danbuckland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danbuckland/crudecumber/issues"
+  },
+  "homepage": "https://github.com/danbuckland/crudecumber#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-stylus": "^2.3.0"
+  }
+}
