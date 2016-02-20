@@ -11,6 +11,8 @@ author:
 
 twitter_username: danbuckland
 github_username:  danbuckland
+github_url: "https://github.com/danbuckland/crudecumber"
+rubygems_url: "https://rubygems.org/gems/crudecumber"
 
 # Gems
 gems:
