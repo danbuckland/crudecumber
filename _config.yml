@@ -1,0 +1,23 @@
+# Site settings
+title: Crudecumber
+tagline: A manual Cucumber runner
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://crudecumber.xyz" # the base hostname & protocol for your site
+
+# contact
+author:
+  name: Dan Buckland
+  url: http://github.com/danbuckland
+
+twitter_username: danbuckland
+github_username:  danbuckland
+
+# Gems
+gems:
+  - jekyll-paginate
+
+# Others
+markdown: redcarpet
+
+# Exclude Stylus files, nodemodules, and gulpfile
+exclude: [node_modules, gulpfile.js, styl, npm-debug.log]
