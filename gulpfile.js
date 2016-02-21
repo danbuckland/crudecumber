@@ -7,7 +7,7 @@ var gulp        = require('gulp'),
 // Watch for file changes
 gulp.task('watch', function() {
   gulp.watch(['styl/*.styl'], ['stylus']);
-  gulp.watch(['*.html', '_includes/*.html', '_layouts/*.html', '*.md', '_posts/*', '_config.yml'], ['jekyll-rebuild']);
+  gulp.watch(['*.html', '_includes/*.html', '_layouts/*.html', '*.md', '_posts/*', '_config.yml', 'favicons/*', '*.xml', '*.png', '*.ico'], ['jekyll-rebuild']);
 })
 
 // Clean built files in '_site' directory

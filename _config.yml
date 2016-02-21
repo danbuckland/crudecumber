@@ -3,6 +3,8 @@ title: Crudecumber
 tagline: A manual Cucumber runner
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://crudecumber.xyz" # the base hostname & protocol for your site
+color-primary: "#007C5C"
+color-secondary: "#26AF9A"
 
 # contact
 author:
