@@ -10,7 +10,7 @@ module Crudecumber
   # SlowHandCuke formatter) and stops irrelevant Ruby errors being displayed.
   class Formatter < Cucumber::Formatter::Pretty
     def before_step(step)
-      @io.printf "... #{step.name}"
+      @io.printf "#{step.keyword}#{step.name}".indent(@scenario_indent + 2)
       @io.flush
     end
 
