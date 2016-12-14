@@ -9,7 +9,7 @@ Feature: Running any Cucumber scenarios with the Crudecumber gem
     When I run 'crudecumber'
     Then I should be able to step through my scenarios manually
 
-  @bugs @#2
+  @bugs @2
   Scenario: Ignore local step definitions to avoid ambiguous matches
     Given I have local step definitions for this step
     And a default profile explicitly requiring the step_definitions folder
@@ -20,9 +20,9 @@ Feature: Running any Cucumber scenarios with the Crudecumber gem
   @tables
   Scenario: Allow testers to manually run scenarios with tables
     Given I have a scenario that contains the following table:
-      | Javan Slow Loris    |
-      | Rondo Dwarf Galago  |
-      | Brown Spider Monkey |
+    | Javan Slow Loris    |
+    | Rondo Dwarf Galago  |
+    | Brown Spider Monkey |
     When I run 'crudecumber'
     Then I should be able to step through this scenario manually
 
