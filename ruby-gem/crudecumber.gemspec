@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.author      = ['Dan Buckland']
   s.email       = 'danbucklan@gmail.com'
   s.files       = Dir['lib/**/**/*'] + Dir['bin/*']
-  s.homepage    = 'https://github.com/danbuckland/crudecumber'
+  s.homepage    = 'http://crudecumber.xyz'
   s.license     = 'MIT'
   s.platform    = Gem::Platform::RUBY
   s.required_ruby_version = '>= 1.9.3'
