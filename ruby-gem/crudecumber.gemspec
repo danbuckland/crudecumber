@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name        = 'crudecumber'
-  s.version     = '0.1.5'
-  s.date        = '2015-06-21'
-  s.summary     = 'Crudecumber 0.1.5'
+  s.version     = '0.2.0'
+  s.date        = Date.today.to_s
+  s.summary     = 'Crudecumber 0.2.0'
   s.description = "Manually run through your Cucumber scenarios.\n
   Run exactly as you would run Cucumber but instead use \'crudecumber\' followed
   by your usual arguments."
