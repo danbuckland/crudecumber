@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   Run exactly as you would run Cucumber but instead use \'crudecumber\' followed
   by your usual arguments."
   s.author      = ['Dan Buckland']
-  s.email       = 'danbucklan@gmail.com'
+  s.email       = 'me@danb.io'
   s.files       = Dir['lib/**/**/*'] + Dir['bin/*']
   s.homepage    = 'http://crudecumber.xyz'
   s.license     = 'MIT'
