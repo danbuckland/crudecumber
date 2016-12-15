@@ -15,7 +15,7 @@ module Crudecumber
     end
 
     def before_step_result(*args)
-      @io.printf "\r"
+      @io.printf "\r\033[K"
       super
     end
 
