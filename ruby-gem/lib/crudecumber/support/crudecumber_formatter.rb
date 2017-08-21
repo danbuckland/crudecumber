@@ -12,12 +12,16 @@ module Crudecumber
     def before_step(step)
       @io.printf "#{step.keyword}#{step.name}".indent(@scenario_indent + 2)
       unless step.multiline_arg.nil?
-        print_table(step)
+        @io.printf "#{step.multiline_arg}".indent(@scenario_indent + 2)
       end
       super
     end
 
     def before_step_result(*args)
+      unless args[2].nil?
+        rows = args[2].raw.length
+        @io.printf "\033[#{rows + 1}A"
+      end
       @io.printf "\r\033[K"
       super
     end
@@ -26,17 +30,9 @@ module Crudecumber
       # Do nothing
     end
 
-    def print_table(step)
-      @io.print ::Cucumber::Term::ANSIColor.white("#{step.multiline_arg}".indent(@scenario_indent + 2))
-      n = step.multiline_arg.raw.length + 1
-      @io.printf "\033[#{n}A"
-      # Print line again to reposition cursor
-      @io.printf "#{step.keyword}#{step.name}".indent(@scenario_indent + 2)
-    end
-
     def table_cell_value(value, status)
       return if !@table || @hide_this_step
-      status ||= @status || :failed
+      status ||= @status || :passed
       width = @table.col_width(@col_index)
       cell_text = escape_cell(value.to_s || '')
       padded = cell_text + (' ' * (width - cell_text.unpack('U*').length))
@@ -44,6 +40,8 @@ module Crudecumber
       @io.print(' ' + format_string("#{prefix}    #{padded}", status) + ::Cucumber::Term::ANSIColor.reset(" |"))
       @io.flush
     end
+
+
   end
 
   # Custom formatter that inherits from the standard Cucumber 'Html' formatter
