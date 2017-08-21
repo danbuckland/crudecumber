@@ -18,14 +18,14 @@ module Crudecumber
     end
 
     def before_step_result(*args)
-      table_rows = args[2].nil? ? 0 : args[2].raw.length
-      
-      if !args[2].nil? # If there is a table
+      is_table = args[2].is_a?(Cucumber::Ast::Table)
+      table_rows = is_table ? args[2].raw.length : 0
+
+      if is_table # If there is a table
         case args[3]
         when :failed
           @io.printf "\033[#{table_rows + 3}A"
         when :pending
-          sleep 4
           @io.printf "\033[#{table_rows + 1}A"
         when :passed
           @io.printf "\033[#{table_rows + 1}A"
@@ -36,10 +36,11 @@ module Crudecumber
         when :failed
           @io.printf "\033[#{2}A"
         when :pending
-          #@io.printf "\033[#{table_rows + 1}A"
+
         when :passed
-          #@io.printf "\033[#{table_rows + 1}A"
+
         when :skipped
+
         end
       end
       @io.printf "\r\033[K"
