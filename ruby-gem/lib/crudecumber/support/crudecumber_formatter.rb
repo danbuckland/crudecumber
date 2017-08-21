@@ -12,6 +12,9 @@ module Crudecumber
     def before_step(step)
       @io.printf "#{step.keyword}#{step.name}".indent(@scenario_indent + 2)
       @io.flush
+      unless step.multiline_arg.nil?
+        @io.printf "\033[0;31m #{step.multiline_arg}".indent(@scenario_indent)
+      end
     end
 
     def before_step_result(*args)
