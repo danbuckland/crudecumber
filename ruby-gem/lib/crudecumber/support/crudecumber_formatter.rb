@@ -29,18 +29,11 @@ module Crudecumber
           @io.printf "\033[#{table_rows + 1}A"
         when :passed
           @io.printf "\033[#{table_rows + 1}A"
-        when :skipped
         end
       else
         case args[3]
         when :failed
-          @io.printf "\033[#{2}A"
-        when :pending
-
-        when :passed
-
-        when :skipped
-
+          @io.printf "\033[2A"
         end
       end
       @io.printf "\r\033[K"
@@ -58,11 +51,9 @@ module Crudecumber
       cell_text = escape_cell(value.to_s || '')
       padded = cell_text + (' ' * (width - cell_text.unpack('U*').length))
       prefix = cell_prefix(status)
-      @io.print(' ' + format_string("#{prefix}    #{padded}", status) + ::Cucumber::Term::ANSIColor.reset(" |"))
+      @io.print(' ' + format_string("#{prefix}    #{padded}", status) + ::Cucumber::Term::ANSIColor.reset(' |'))
       @io.flush
     end
-
-
   end
 
   # Custom formatter that inherits from the standard Cucumber 'Html' formatter
