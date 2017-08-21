@@ -11,12 +11,10 @@ module Crudecumber
   class Formatter < Cucumber::Formatter::Pretty
     def before_step(step)
       @io.printf "#{step.keyword}#{step.name}".indent(@scenario_indent + 2)
-      @io.flush
       unless step.multiline_arg.nil?
-        @io.printf "#{step.multiline_arg}".indent(@scenario_indent)
-        n = step.multiline_arg.raw.length + 1
-        @io.printf "\033[#{n}A"
+        print_table(step)
       end
+      super
     end
 
     def before_step_result(*args)
@@ -26,6 +24,25 @@ module Crudecumber
 
     def exception(_arg_1, _arg_2)
       # Do nothing
+    end
+
+    def print_table(step)
+      @io.print ::Cucumber::Term::ANSIColor.white("#{step.multiline_arg}".indent(@scenario_indent + 2))
+      n = step.multiline_arg.raw.length + 1
+      @io.printf "\033[#{n}A"
+      # Print line again to reposition cursor
+      @io.printf "#{step.keyword}#{step.name}".indent(@scenario_indent + 2)
+    end
+
+    def table_cell_value(value, status)
+      return if !@table || @hide_this_step
+      status ||= @status || :failed
+      width = @table.col_width(@col_index)
+      cell_text = escape_cell(value.to_s || '')
+      padded = cell_text + (' ' * (width - cell_text.unpack('U*').length))
+      prefix = cell_prefix(status)
+      @io.print(' ' + format_string("#{prefix}    #{padded}", status) + ::Cucumber::Term::ANSIColor.reset(" |"))
+      @io.flush
     end
   end
 
