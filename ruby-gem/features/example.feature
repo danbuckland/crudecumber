@@ -27,6 +27,23 @@ Feature: Running any Cucumber scenarios with the Crudecumber gem
     Then I should be able to step through this scenario manually
 
   @tables
+  Scenario: Display and overwrite long tables
+    Given I have a scenario that contains the following table:
+    | Most Endangered Species     | Number left |
+    | Ivory-Billed Woodpecker     | A handful   |
+    | Amur Leopard                | 20          |
+    | Javan Rhinoceros            | 40-60       |
+    | Lemur                       | ?           |
+    | Northern Right Whale        | 350         |
+    | Vaquita                     | 500-600     |
+    | Black Rhinoceros            | 5000+       |
+    | Mountain Gorilla            | 302-408     |
+    | Baiji/Yangtze River Dolphin | 3+          |
+    | Saola/Asian Unicorn         | ?           |
+    When I run 'crudecumber'
+    Then I should be able to step through this scenario manually
+
+  @tables
   Scenario Outline: Allow testers to manually run scenario outlines
     Given I have a table full of examples
     And <country> has <tourists> visitors each year

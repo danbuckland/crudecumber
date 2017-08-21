@@ -13,7 +13,9 @@ module Crudecumber
       @io.printf "#{step.keyword}#{step.name}".indent(@scenario_indent + 2)
       @io.flush
       unless step.multiline_arg.nil?
-        @io.printf "\033[0;31m #{step.multiline_arg}".indent(@scenario_indent)
+        @io.printf "#{step.multiline_arg}".indent(@scenario_indent)
+        n = step.multiline_arg.raw.length + 1
+        @io.printf "\033[#{n}A"
       end
     end
 
