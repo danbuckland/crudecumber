@@ -92,8 +92,9 @@ For this to work, you should ensure that you have **Crudecumber** in your Gemfil
 
 
 ## Known issues and limitations
+Crudecumber should now be feature complete, i.e. it should be able to work with all standard Cucumber scenario types. If you spot a bug, please raise an issue against the project.
 
-Crudecumber is in its infancy and will be capable of more in time. In the current release there are the following known issues:
+In the current release there are the following known issues:
 * **Crudecumber is not compatible with Cucumber 2.0 or above.** Even if you're not using Cucumber 2.0 but you have it installed, you'll have a problem with steps not being rendered until after they are passed, failed or skipped. The best way to avoid this is to use [rvm](https://rvm.io/) and use a separate gemset for your Cucumber 2.0 stuff.
 * This tool has been developed and tested on Mac OSX and Linux. Windows users may have trouble getting it to run.
 
@@ -102,4 +103,4 @@ If you'd like to contribute to this project and perhaps fix any of the above, pl
 
 ## Copyright
 
-Copyright (c) 2015 Dan Buckland and Contributors. See LICENSE for details.
+Copyright (c) 2015-2017 Dan Buckland and Contributors. See LICENSE for details.

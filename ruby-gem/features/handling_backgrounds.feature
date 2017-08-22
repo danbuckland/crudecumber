@@ -1,3 +1,4 @@
+@backgrounds
 Feature: Running any scenarios with backgrounds using the Crudecumber gem
 
   Running version 0.1.5 of Crudecumber with scenarios that have background steps
