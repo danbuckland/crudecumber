@@ -8,7 +8,6 @@ Feature: Handling scenarios with tables
   The Crudecumber formatter has since been updated to handle these multiline
   arguments correctly and display them before the result of the step.
 
-  @tables
   Scenario: Allow testers to manually run scenarios with tables
     Given I have a scenario that contains the following table:
     | Javan Slow Loris    |
@@ -17,7 +16,6 @@ Feature: Handling scenarios with tables
     When I run 'crudecumber'
     Then I should be able to step through this scenario manually
 
-  @tables
   Scenario: Display and overwrite long tables
     Given I have a scenario that contains the following table:
     | Most Endangered Species     | Number left |
@@ -34,22 +32,6 @@ Feature: Handling scenarios with tables
     When I run 'crudecumber'
     Then I should be able to step through this scenario manually
 
-  @docstrings
-  Scenario: Display and overwrite DocStrings
-    Given I have scenario that contains a DocString like:
-      """
-      What are Doc Strings?
-      =====================
-      Doc Strings are handy for passing a larger piece of text to a step
-      definition. The syntax is inspired from Python's Docstring syntax.
-
-      The text should be offset by delimiters consisting of three double-quote
-      marks on lines of their own.
-      """
-    When I run 'crudecumber'
-    Then I should be able to step through this scenario manually
-
-  @tables
   Scenario Outline: Allow testers to manually run scenario outlines
     Given I have a table full of examples
     And <country> has <tourists> visitors each year

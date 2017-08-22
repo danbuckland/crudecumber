@@ -1,3 +1,4 @@
+@basics
 Feature: Running any Cucumber scenarios with the Crudecumber gem
 
   As a QA Engineer learning Cucumber, I want to write scenarios for a product
