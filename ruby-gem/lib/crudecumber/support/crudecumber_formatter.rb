@@ -18,20 +18,12 @@ module Crudecumber
     end
 
     def before_step_result(*args)
-      is_table = args[2].is_a?(Cucumber::Ast::Table)
-      table_rows = is_table ? args[2].raw.length : 0
-
-      if is_table # If there is a table
-        case args[3]
-        when :failed
-          @io.printf "\033[#{table_rows + 3}A"
-        when :pending
-          @io.printf "\033[#{table_rows + 1}A"
-        when :passed
-          @io.printf "\033[#{table_rows + 1}A"
-        when :skipped
-          @io.printf "\033[#{table_rows + 1}A"
-        end
+      case args[2]
+      when Cucumber::Ast::Table
+        move_cursor_up(args[2].raw.length, args)
+      when Cucumber::Ast::DocString
+        # TODO
+        p "I got a DocString"
       else
         case args[3]
         when :failed
@@ -40,6 +32,19 @@ module Crudecumber
       end
       @io.printf "\r\033[K"
       super
+    end
+
+    def move_cursor_up(height, args)
+      case args[3]
+      when :failed
+        @io.printf "\033[#{height + 3}A"
+      when :pending
+        @io.printf "\033[#{height + 1}A"
+      when :passed
+        @io.printf "\033[#{height + 1}A"
+      when :skipped
+        @io.printf "\033[#{height + 1}A"
+      end
     end
 
     def exception(_arg_1, _arg_2)
