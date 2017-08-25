@@ -38,7 +38,7 @@ Scenario: Skip Doc String step
 
 Scenario: Mark Doc String step as Pending
   Given I have a scenario that contains a Doc String
-  When I press 'S' to mark this Doc String step as Pending:
+  When I press 's' to mark this Doc String step as Pending:
     """ruby
     STDOUT.sync = true
     arguments = ARGV
