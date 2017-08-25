@@ -28,10 +28,7 @@ module Crudecumber
       when Cucumber::Ast::DocString
         clear_multiline(args[2].lines.count + 1, args)
       else
-        case args[3]
-        when :failed
-          @io.printf "\033[2A"
-        end
+        @io.printf "\033[2A" if args[3] == :failed
       end
       @io.printf "\r\033[K"
       super
@@ -45,10 +42,6 @@ module Crudecumber
       end
     end
 
-    def exception(_arg_1, _arg_2)
-      # Do nothing
-    end
-
     def table_cell_value(value, status)
       return if !@table || @hide_this_step
       status ||= @status || :passed
@@ -56,8 +49,12 @@ module Crudecumber
       cell_text = escape_cell(value.to_s || '')
       padded = cell_text + (' ' * (width - cell_text.unpack('U*').length))
       prefix = cell_prefix(status)
-      @io.print(' ' + format_string("#{prefix}    #{padded}", status) + ::Cucumber::Term::ANSIColor.reset(' |'))
+      @io.print(' ' + format_string("#{prefix}#{padded}", status) + ::Cucumber::Term::ANSIColor.reset(' |'))
       @io.flush
+    end
+
+    def exception(_arg_1, _arg_2)
+      # Do nothing
     end
   end
 
