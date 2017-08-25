@@ -32,15 +32,14 @@ Feature: Handling scenarios with tables
     When I run 'crudecumber'
     Then I should be able to step through this scenario manually
 
-  Scenario Outline: Allow testers to manually run scenario outlines
-    Given I have a table full of examples
-    And <country> has <tourists> visitors each year
-    And an area of <area>
-    When I run 'crudecumber'
-    Then I should be able to step through each scenario manually
-
-    Examples:
-      | country      | area     | tourists  |
-      | Vatican City | 0.44km^2 | 4,300,000 |
-      | Monaco       | 1.95km^2 | 328,000   |
-      | San Marino   | 61km^2   | 70,000    |
+  @bugs @14
+  Scenario: Render skipped tables only once
+    Given a scenario with a table
+    When I skip this step and it is marked as Pending by Crudecumber
+    Then this should be skipped and the following table should appear only once
+      | Gross monthly income:             | £2,208.33 |
+      | Personal allowance:               |   £883.33 |
+      | Total tax deductions:             |   £265.00 |
+      | National Insurance contributions: |   £184.40 |
+      | Total deductions:                 |   £449.40 |
+      | Net monthly income:               | £1,758.93 |

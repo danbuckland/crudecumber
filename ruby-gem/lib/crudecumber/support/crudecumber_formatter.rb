@@ -29,6 +29,8 @@ module Crudecumber
           @io.printf "\033[#{table_rows + 1}A"
         when :passed
           @io.printf "\033[#{table_rows + 1}A"
+        when :skipped
+          @io.printf "\033[#{table_rows + 1}A"
         end
       else
         case args[3]
