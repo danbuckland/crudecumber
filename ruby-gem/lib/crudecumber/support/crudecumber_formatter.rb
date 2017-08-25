@@ -11,39 +11,35 @@ module Crudecumber
   class Formatter < Cucumber::Formatter::Pretty
     def before_step(step)
       @io.printf "#{step.keyword}#{step.name}".indent(@scenario_indent + 2)
-      unless step.multiline_arg.nil?
+      case step.multiline_arg
+      when Cucumber::Ast::Table
         @io.printf "#{step.multiline_arg}".indent(@scenario_indent + 2)
+      when Cucumber::Ast::DocString
+        @io.printf "\n"
+        @io.printf "\"\"\"\n#{step.multiline_arg}\n\"\"\"".indent(@scenario_indent + 4)
       end
       super
     end
 
     def before_step_result(*args)
-      is_table = args[2].is_a?(Cucumber::Ast::Table)
-      table_rows = is_table ? args[2].raw.length : 0
-
-      if is_table # If there is a table
-        case args[3]
-        when :failed
-          @io.printf "\033[#{table_rows + 3}A"
-        when :pending
-          @io.printf "\033[#{table_rows + 1}A"
-        when :passed
-          @io.printf "\033[#{table_rows + 1}A"
-        when :skipped
-          @io.printf "\033[#{table_rows + 1}A"
-        end
+      case args[2]
+      when Cucumber::Ast::Table
+        clear_multiline(args[2].raw.length, args)
+      when Cucumber::Ast::DocString
+        clear_multiline(args[2].lines.count + 1, args)
       else
-        case args[3]
-        when :failed
-          @io.printf "\033[2A"
-        end
+        @io.printf "\033[2A" if args[3] == :failed
       end
       @io.printf "\r\033[K"
       super
     end
 
-    def exception(_arg_1, _arg_2)
-      # Do nothing
+    def clear_multiline(height, args)
+      if args[3] == :failed
+        @io.printf "\r" + ("\e[A\e[K" * (height + 3))
+      else
+        @io.printf "\r" + ("\e[A\e[K" * (height + 1))
+      end
     end
 
     def table_cell_value(value, status)
@@ -53,8 +49,12 @@ module Crudecumber
       cell_text = escape_cell(value.to_s || '')
       padded = cell_text + (' ' * (width - cell_text.unpack('U*').length))
       prefix = cell_prefix(status)
-      @io.print(' ' + format_string("#{prefix}    #{padded}", status) + ::Cucumber::Term::ANSIColor.reset(' |'))
+      @io.print(' ' + format_string("#{prefix}#{padded}", status) + ::Cucumber::Term::ANSIColor.reset(' |'))
       @io.flush
+    end
+
+    def exception(_arg_1, _arg_2)
+      # Do nothing
     end
   end
 
