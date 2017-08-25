@@ -11,8 +11,12 @@ module Crudecumber
   class Formatter < Cucumber::Formatter::Pretty
     def before_step(step)
       @io.printf "#{step.keyword}#{step.name}".indent(@scenario_indent + 2)
-      unless step.multiline_arg.nil?
+      case step.multiline_arg
+      when Cucumber::Ast::Table
         @io.printf "#{step.multiline_arg}".indent(@scenario_indent + 2)
+      when Cucumber::Ast::DocString
+        @io.printf "\n"
+        @io.printf "\"\"\"\n#{step.multiline_arg}\n\"\"\"".indent(@scenario_indent + 4)
       end
       super
     end
@@ -22,8 +26,7 @@ module Crudecumber
       when Cucumber::Ast::Table
         move_cursor_up(args[2].raw.length, args)
       when Cucumber::Ast::DocString
-        # TODO
-        p "I got a DocString"
+        move_cursor_up(args[2].lines.count + 1, args)
       else
         case args[3]
         when :failed

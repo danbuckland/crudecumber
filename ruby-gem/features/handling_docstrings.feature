@@ -14,9 +14,6 @@ Scenario: Display and overwrite Doc Strings
     =====================
     Doc Strings are handy for passing a larger piece of text to a step
     definition. The syntax is inspired from Python's Docstring syntax.
-
-    The text should be offset by delimiters consisting of three double-quote
-    marks on lines of their own.
     """
   When I run 'crudecumber'
   Then I should be able to step through this scenario manually
@@ -59,8 +56,5 @@ Scenario: Fail Doc String step
     =====================
     Doc Strings are handy for passing a larger piece of text to a step
     definition. The syntax is inspired from Python's Docstring syntax.
-
-    The text should be offset by delimiters consisting of three double-quote
-    marks on lines of their own.
     """
   Then this step should be shown as skipped and everything appear correctly
