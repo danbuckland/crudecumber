@@ -24,9 +24,9 @@ module Crudecumber
     def before_step_result(*args)
       case args[2]
       when Cucumber::Ast::Table
-        move_cursor_up(args[2].raw.length, args)
+        clear_multiline(args[2].raw.length, args)
       when Cucumber::Ast::DocString
-        move_cursor_up(args[2].lines.count + 1, args)
+        clear_multiline(args[2].lines.count + 1, args)
       else
         case args[3]
         when :failed
@@ -37,16 +37,11 @@ module Crudecumber
       super
     end
 
-    def move_cursor_up(height, args)
-      case args[3]
-      when :failed
-        @io.printf "\033[#{height + 3}A"
-      when :pending
-        @io.printf "\033[#{height + 1}A"
-      when :passed
-        @io.printf "\033[#{height + 1}A"
-      when :skipped
-        @io.printf "\033[#{height + 1}A"
+    def clear_multiline(height, args)
+      if args[3] == :failed
+        @io.printf "\r" + ("\e[A\e[K" * (height + 3))
+      else
+        @io.printf "\r" + ("\e[A\e[K" * (height + 1))
       end
     end
 
