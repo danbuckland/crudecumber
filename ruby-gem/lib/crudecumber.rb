@@ -1,35 +1,13 @@
-# This simply requires the Crudecumber step definitions and runs Cucumber with
-# a SlowHandCuke style formatter and an output HTML report.
+# frozen_string_literal: true
 
-trap('INT') do
+require_relative 'crudecumber/runner'
+
+$stdout.sync = true
+
+Signal.trap('INT') do
   system('stty -raw echo')
-  STDERR.puts "\n\n"
+  STDERR.puts "\n"
   exit!(1)
 end
 
-def log(message)
-  return unless ARGV.include?('-v' || '--verbose')
-  $stdout.puts "#{Time.now.strftime('%Y-%m-%d %H:%M:%S')} - #{message}"
-end
-
-def steps
-  File.join(File.dirname(File.expand_path(__FILE__)),
-            'crudecumber/crudecumber_steps.rb')
-end
-
-def support_files
-  File.join(File.dirname(File.expand_path(__FILE__)),
-            'crudecumber/support/')
-end
-
-STDOUT.sync = true
-arguments = ARGV
-cmd = "cucumber #{arguments.join(' ')} -x -e features/step_definitions "\
-      "-r #{steps} -r #{support_files} "\
-      '-f Crudecumber::Formatter -f Crudecumber::Report '\
-      '-o crudecumber_results.html'
-log cmd
-exit_code = system(cmd)
-
-sleep(1)
-exit_code
+Crudecumber::Runner.run(ARGV)
